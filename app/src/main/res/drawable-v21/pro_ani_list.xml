@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="50">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@mipmap/dialog1"
+            android:gravity="left" />
+    </item>
+    <item android:duration="50">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@mipmap/dialog2"
+            android:gravity="left" />
+    </item>
+    <item android:duration="50">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@mipmap/dialog3"
+            android:gravity="left" />
+    </item>
+    <item android:duration="50">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@mipmap/dialog4"
+            android:gravity="left" />
+    </item>
+</animation-list>
