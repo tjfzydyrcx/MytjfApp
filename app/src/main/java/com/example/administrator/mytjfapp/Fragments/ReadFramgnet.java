@@ -53,6 +53,8 @@ public class ReadFramgnet extends BaseFragment {
         return inflater.inflate(R.layout.layout_read_fragment, null);
     }
 
+    private long mStartTime = 0; // 定义一个初始判断时间变量
+
     @Override
     public void init() {
         window = getActivity().getWindow();
@@ -64,17 +66,21 @@ public class ReadFramgnet extends BaseFragment {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ScreenUtils.hide_statuslan(window);
-                MeiziBean.ResultsBean b = (MeiziBean.ResultsBean) adapter.getData().get(position);
-                LogUtils.e("bs==" + b.getUrl());
-                List<MeiziBean.ResultsBean> mlistb;
-                for (int i = 0; i < listmeiz.size(); i++) {
-                    mlistb = listmeiz.get(i).getResults();
-                    for (int j = 0; j < mlistb.size(); j++) {
-                        if (mlistb.get(j).getUrl().equals(b.getUrl())) {
-                            Pupwindowutils mPupwindowutils =
-                                    new Pupwindowutils(window, getActivity(), listmeiz.get(i).getResults());
-                            mPupwindowutils.popuwindow_image(view, j, true);
+                long interval = System.currentTimeMillis() - mStartTime;     // 两次点击时间间隔
+                if (interval >= 500) {
+                    mStartTime = System.currentTimeMillis();
+                    ScreenUtils.hide_statuslan(window);
+                    MeiziBean.ResultsBean b = (MeiziBean.ResultsBean) adapter.getData().get(position);
+                    LogUtils.e("bs==" + b.getUrl());
+                    List<MeiziBean.ResultsBean> mlistb;
+                    for (int i = 0; i < listmeiz.size(); i++) {
+                        mlistb = listmeiz.get(i).getResults();
+                        for (int j = 0; j < mlistb.size(); j++) {
+                            if (mlistb.get(j).getUrl().equals(b.getUrl())) {
+                                Pupwindowutils mPupwindowutils =
+                                        new Pupwindowutils(window, getActivity(), listmeiz.get(i).getResults());
+                                mPupwindowutils.popuwindow_image(view, j, true);
+                            }
                         }
                     }
                 }

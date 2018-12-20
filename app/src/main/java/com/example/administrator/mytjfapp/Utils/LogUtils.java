@@ -105,7 +105,7 @@ public class LogUtils {
         if (customLogger != null) {
             customLogger.e(tag, content);
         } else {
-            Log.e(tag, content);
+            printAll(tag, content);
         }
     }
 
@@ -267,5 +267,22 @@ public class LogUtils {
         return Thread.currentThread().getStackTrace()[4];
     }
 
+    /**
+     * @author 小飞
+     * @create 2018-12-20 14:32
+     * @Describe 超长log打印, 解决log打印不全
+     */
+    public static void printAll(String tag, String msg) {
+        //因为String的length是字符数量不是字节数量所以为了防止中文字符过多，
+        //  把4*1024的MAX字节打印长度改为2001字符数
+        int max_str_length = 2001 - tag.length();
+        //大于4000时
+        while (msg.length() > max_str_length) {
+            Log.e(tag, msg.substring(0, max_str_length));
+            msg = msg.substring(max_str_length);
+        }
+        //剩余部分
+        Log.e(tag, msg);
+    }
 }
 

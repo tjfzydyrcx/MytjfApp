@@ -111,7 +111,6 @@ public class ScreenUtils {
         return bp;
 
     }
-
     //隐藏状态栏
     public static void hide_statuslan(Window window) {
 
@@ -119,12 +118,10 @@ public class ScreenUtils {
         attr.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
         window.setAttributes(attr);
     }
-
     //显示状态栏
     public static void show_statuslan(Window window) {
         WindowManager.LayoutParams attr = window.getAttributes();
         attr.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
         window.setAttributes(attr);
     }
-
 }

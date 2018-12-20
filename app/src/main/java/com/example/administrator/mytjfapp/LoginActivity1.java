@@ -46,11 +46,6 @@ public class LoginActivity1 extends BaseActivity {
     }
 
     @Override
-    protected void bindListener() {
-
-    }
-
-    @Override
     protected int getLayoutViewID() {
         return R.layout.layout_login_main;
     }

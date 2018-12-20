@@ -22,8 +22,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView(); //界面配置參數,必須在setContentView之前
 
-    protected abstract void bindListener();//綁定控件
-
     protected abstract void doCreateBusiness();//和Create有关的业务方法
 
     @Override
@@ -35,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImmersionBar.with(this).init();
         ButterKnife.bind(this);
 //        AIO.getInstance().addActivityList(this); //AIO是我封装的Application的单例，管理Activity和Service使用的
-        bindListener();
+//        bindListener();
         doCreateBusiness();
     }
     @Override

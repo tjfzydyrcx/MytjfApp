@@ -75,11 +75,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void bindListener() {
-
-    }
-
-    @Override
     protected void doCreateBusiness() {
 
     }
