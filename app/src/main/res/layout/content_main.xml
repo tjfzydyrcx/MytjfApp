@@ -14,7 +14,7 @@
             app:tabSelectedTextColor="#F3A73E"
             app:tabTextColor="@color/whites"></android.support.design.widget.TabLayout>
 
-        <com.example.administrator.mytjfapp.View.DecoratorViewPager
+        <com.example.mytjfapp.View.DecoratorViewPager
             android:id="@+id/Doviewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
