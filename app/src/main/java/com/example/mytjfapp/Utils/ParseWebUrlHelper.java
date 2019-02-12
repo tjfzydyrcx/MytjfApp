@@ -36,13 +36,10 @@ public class ParseWebUrlHelper {
         return parseWebUrlHelper;
     }
 
-    public ParseWebUrlHelper init(Activity act, String url) {
+    public ParseWebUrlHelper init(WebView webView, Activity act, String url) {
         this.mAct = act;
         this.webUrl = url;
-        ViewGroup mainView = (ViewGroup) mAct.findViewById(android.R.id.content);
-        this.webView = new WebView(mAct);
-        this.webView.setLayoutParams(new LinearLayout.LayoutParams(1, 1));
-        mainView.addView(this.webView);
+        this.webView = webView;
         initWebSettings();
         return this;
     }
@@ -99,14 +96,17 @@ public class ParseWebUrlHelper {
         mWebView.setWebViewClient(new MyWebViewClient());
         enabledCookie(webView);//启用cookie
     }
-    public ParseWebUrlHelper setLoadUrl(String url){
-        this.webUrl=url;
+
+    public ParseWebUrlHelper setLoadUrl(String url) {
+        this.webUrl = url;
         return this;
     }
-    public ParseWebUrlHelper startParse(){
+
+    public ParseWebUrlHelper startParse() {
         webView.loadUrl(this.webUrl);
         return this;
     }
+
     /*启用cookie*/
     private void enabledCookie(WebView web) {
         CookieManager instance = CookieManager.getInstance();
@@ -129,18 +129,18 @@ public class ParseWebUrlHelper {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            if(request.getUrl().toString().startsWith("intent")||request.getUrl().toString().startsWith("youku")){
+            if (request.getUrl().toString().startsWith("intent") || request.getUrl().toString().startsWith("youku")) {
                 return true;
-            }else{
+            } else {
                 return super.shouldOverrideUrlLoading(view, request);
             }
         }
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if(url.startsWith("intent")||url.startsWith("youku")){
+            if (url.startsWith("intent") || url.startsWith("youku")) {
                 return true;
-            }else{
+            } else {
                 return super.shouldOverrideUrlLoading(view, url);
             }
         }
@@ -174,23 +174,24 @@ public class ParseWebUrlHelper {
         }
 
     }
+
     /*解决webview加载超时问题*/
-   private void startConut(){
-        final Timer timer=new Timer();
-        TimerTask timerTask=new TimerTask(){
+    private void startConut() {
+        final Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 onParseListener.onError("解析视频超时，请检查网速或网络是否出现问题...");
                 timer.cancel();
                 timer.purge();
             }
         };
-        timer.schedule(timerTask,timeOut,1);
+        timer.schedule(timerTask, timeOut, 1);
     }
 
     public interface OnParseWebUrlListener {
         void onFindUrl(String url);
+
         void onError(String errorMsg);
     }
 }

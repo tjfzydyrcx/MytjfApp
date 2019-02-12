@@ -43,9 +43,11 @@ public class Pupwindowutils {
 
     }
 
-    public Pupwindowutils(Context mContent, String imglist) {
+    public Pupwindowutils(Window window,Context mContent, String imglist) {
         this.mContent = mContent;
         this.imglist1 = imglist;
+        this.window = window;
+
 
     }
 
@@ -54,11 +56,7 @@ public class Pupwindowutils {
         View contentView = LayoutInflater.from(mContent).inflate(R.layout.popuwindow_image, null);
         viewPager = contentView.findViewById(R.id.pager);
         popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
-     /*   int height = ScreenUtils.getScreenHeight(mContent);
-        int width = ScreenUtils.getScreenWidth(mContent);
 
-        popupWindow.setHeight(height);
-        popupWindow.setWidth(width);*/
         popupWindow.setClippingEnabled(false);
         popupWindow.setTouchable(true);
         popupWindow.setTouchInterceptor(new View.OnTouchListener() {
@@ -128,6 +126,7 @@ public class Pupwindowutils {
         public void onPhotoTap(View view, float v, float v1) {
            ScreenUtils.show_statuslan(window);
             popupWindow.dismiss();
+            mViews.removeAll(imglist);
         }
 
         @Override

@@ -3,9 +3,10 @@ package com.example.mytjfapp;
 import android.text.TextUtils;
 import android.widget.EditText;
 
+import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Base.BaseActivity;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
+
 import com.example.mytjfapp.Utils.LogUtils;
 import com.example.mytjfapp.Utils.MD5;
 import com.example.mytjfapp.Utils.SHA1;
@@ -13,6 +14,7 @@ import com.example.mytjfapp.Utils.StringUrl;
 import com.example.mytjfapp.Utils.TooastUtil;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,7 +44,7 @@ public class LoginActivity extends BaseActivity {
             TooastUtil.showLong(this, "请输入完整密码");
             return;
         } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(pwd)) {
-            HashMap<String, Object> map = new HashMap<>();
+            Map<String, String> map = new HashMap<>();
             String signs = SHA1.encode(MD5.GetMD5Code(name + StringUrl.sign));
             map.put("sign", signs);
             map.put("username", name);
@@ -50,8 +52,9 @@ public class LoginActivity extends BaseActivity {
             LogUtils.e("password=" + name + pwd);
             HttpHelper.obtain().get(StringUrl.baseLogin, map, new HttpCallBack<String>() {
                 @Override
-                public void onSuccess(String result) {
+                public String onSuccess(String result) {
                     LogUtils.e("result=" + result.toString());
+                    return null;
                 }
 
                 @Override

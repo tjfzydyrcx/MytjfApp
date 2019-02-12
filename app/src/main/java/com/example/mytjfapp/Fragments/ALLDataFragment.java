@@ -8,17 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Adapter.AllAdapter;
-import com.example.mytjfapp.Adapter.VideoAdapter;
 import com.example.mytjfapp.Base.BaseFragment;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
+
 import com.example.mytjfapp.Model.AllBean;
-import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.Utils.LogUtils;
-import com.example.mytjfapp.Utils.Pupwindowutils;
-import com.example.mytjfapp.Utils.ScreenUtils;
 import com.example.mytjfapp.Utils.StringUrl;
 
 import java.util.ArrayList;
@@ -76,7 +73,7 @@ public class ALLDataFragment extends BaseFragment
     public void getMeizi() {
         HttpHelper.obtain().get(StringUrl.getAll + i, null, new HttpCallBack<AllBean>() {
             @Override
-            public void onSuccess(AllBean result) {
+            public String onSuccess(AllBean result) {
                 //   LogUtils.e("dats" + result.toString());
                 if (result.getResults().size() > 0) {
                     list.addAll(result.getResults());
@@ -85,6 +82,8 @@ public class ALLDataFragment extends BaseFragment
                 } else {
                     adapter.loadMoreEnd();
                 }
+
+                return null;
             }
 
             @Override

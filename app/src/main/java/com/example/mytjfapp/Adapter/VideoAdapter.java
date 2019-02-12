@@ -47,25 +47,24 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseVi
 
         }*/
 
-        //初始化
-        ParseWebUrlHelper parseWebUrlHelper = ParseWebUrlHelper.getInstance().init(context, item.getUrl());
+  /*      //初始化
+        ParseWebUrlHelper parseWebUrlHelper = ParseWebUrlHelper.getInstance().init((WebView) helper.getView(R.id.Web_view), context, item.getUrl());
 //解析网页中视频
         parseWebUrlHelper.setOnParseListener(new ParseWebUrlHelper.OnParseWebUrlListener() {
             @Override
             public void onFindUrl(String url) {
                 LogUtils.e("webUrl" + url);
-                //*****处理代码
-            }
+                /*//*****处理代码
+         }
 
-            @Override
-            public void onError(String errorMsg) {
-                //****出错监听
-                LogUtils.e("errorMsg" + errorMsg);
-            }
+         @Override public void onError(String errorMsg) {
+         /*//****出错监听
+         LogUtils.e("errorMsg" + errorMsg);
+         }
 
-        });
-    }
- /*       WebView webView = helper.getView(R.id.Web_view);
+         });*/
+
+        WebView webView = helper.getView(R.id.Web_view);
         webView.loadUrl(item.getUrl());
         webView.addJavascriptInterface(this, "android");//添加js监听 这样html就能调用客户
         WebSettings webSettings = webView.getSettings();
@@ -73,7 +72,7 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseVi
 //支持屏幕缩放
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
@@ -81,7 +80,7 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseVi
                 view.loadUrl(url);
                 return true;
             }
-        });*/
-
+        });
+    }
 
 }

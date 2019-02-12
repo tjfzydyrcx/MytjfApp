@@ -19,7 +19,6 @@ import com.example.mytjfapp.Fragments.AndroidFragment;
 import com.example.mytjfapp.Fragments.GirlFramgnet;
 import com.example.mytjfapp.Fragments.XianReadFragment;
 import com.example.mytjfapp.Utils.GlideUtils;
-import com.example.mytjfapp.Utils.tabLayout_line;
 import com.example.mytjfapp.View.DecoratorViewPager;
 
 import java.util.ArrayList;
@@ -49,9 +48,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         setSupportActionBar(toolbar);
-
         setDatas();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,6 +57,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         ImageView imageView = navigationView.getHeaderView(0).findViewById(R.id.imageView);
         GlideUtils.loadCircleImage(this, "https://ww1.sinaimg.cn/large/0065oQSqgy1ftrrvwjqikj30go0rtn2i.jpg", imageView);
+
+
+
     }
 
     private void setDatas() {
@@ -103,26 +103,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    /**
-     * tablayout 使用
-     */
-    public void configTablayout() {
-        for (int i1 = 0; i1 < mDatas.size(); i1++) {
-            tab.getTabAt(i1).setText(mDatas.get(i1));
-//            tab.addTab(tab.newTab().setText(mDatas.get(i1)));
-        }
-        tab.setTabGravity(TabLayout.GRAVITY_FILL);
-        tab.setTabMode(TabLayout.MODE_FIXED);
-        tab.post(new Runnable() {
-            @Override
-            public void run() {
-                tabLayout_line.setIndicator(tab, 50, 50);
 
-            }
-        });
-
-
-    }
 
     @Override
     public void onBackPressed() {

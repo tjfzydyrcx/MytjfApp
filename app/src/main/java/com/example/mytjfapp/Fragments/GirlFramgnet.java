@@ -16,10 +16,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Adapter.MeiziAdapter;
 import com.example.mytjfapp.Base.BaseFragment;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
+
 import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.Utils.LogUtils;
@@ -107,7 +108,7 @@ public class GirlFramgnet extends BaseFragment {
     public void getMeizi() {
         HttpHelper.obtain().get(StringUrl.getMeiziUrl + i, null, new HttpCallBack<MeiziBean>() {
             @Override
-            public void onSuccess(MeiziBean result) {
+            public String onSuccess(MeiziBean result) {
                 LogUtils.e("dats" + result.toString());
                 if (result.getResults().size() > 0) {
                     listmeiz.add(result);
@@ -117,6 +118,8 @@ public class GirlFramgnet extends BaseFragment {
                 } else {
                     adapter.loadMoreEnd();
                 }
+
+                return null;
             }
 
             @Override

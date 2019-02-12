@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Adapter.MeiziAdapter;
 import com.example.mytjfapp.Adapter.VideoAdapter;
 import com.example.mytjfapp.Base.BaseFragment;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
+
 import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.Model.VideoBean;
 import com.example.mytjfapp.R;
@@ -73,7 +74,7 @@ public class XianReadFragment extends BaseFragment {
     public void getMeizi() {
         HttpHelper.obtain().get(StringUrl.getVideo + i, null, new HttpCallBack<VideoBean>() {
             @Override
-            public void onSuccess(VideoBean result) {
+            public String onSuccess(VideoBean result) {
                 LogUtils.e("dats" + result.toString());
                 if (result.getResults().size() > 0) {
                     list.addAll(result.getResults());
@@ -82,6 +83,7 @@ public class XianReadFragment extends BaseFragment {
                 } else {
                     adapter.loadMoreEnd();
                 }
+                return null;
             }
 
             @Override

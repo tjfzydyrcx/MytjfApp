@@ -8,10 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Adapter.AllAdapter;
 import com.example.mytjfapp.Base.BaseFragment;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
+
 import com.example.mytjfapp.Model.AllBean;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.Utils.LogUtils;
@@ -82,7 +83,7 @@ public class AndroidFragment extends BaseFragment {
     public void getMeizi() {
         HttpHelper.obtain().get(StringUrl.getAndroid + i, null, new HttpCallBack<AllBean>() {
             @Override
-            public void onSuccess(AllBean result) {
+            public String onSuccess(AllBean result) {
                 //   LogUtils.e("dats" + result.toString());
                 if (result.getResults().size() > 0) {
                     list.addAll(result.getResults());
@@ -91,6 +92,8 @@ public class AndroidFragment extends BaseFragment {
                 } else {
                     adapter.loadMoreEnd();
                 }
+
+                return null;
             }
 
             @Override

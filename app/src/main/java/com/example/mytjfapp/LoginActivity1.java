@@ -9,17 +9,8 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.mytjfapp.Base.BaseActivity;
-import com.example.mytjfapp.HttpProcessor.Http.HttpCallBack;
-import com.example.mytjfapp.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Utils.MyDialog;
-import com.example.mytjfapp.Utils.SHA1;
-import com.example.mytjfapp.Utils.StringUrl;
 import com.example.mytjfapp.Utils.ToastUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
