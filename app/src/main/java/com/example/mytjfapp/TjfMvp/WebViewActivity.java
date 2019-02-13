@@ -111,9 +111,7 @@ public class WebViewActivity extends BaseActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 
-            LogUtils.e( "request=="+request.getUrl() );
-            if (request != null) {
-
+             if (request != null) {
                 view.loadUrl(request.getUrl().toString());
             }
             return true;
