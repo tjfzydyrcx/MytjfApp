@@ -1,6 +1,8 @@
 package com.example.mytjfapp.TjfMvp.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,13 +11,13 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.mymvp.base.BaseFragment;
-import com.example.mymvp.base.BaseView;
 import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
 import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
 import com.example.mytjfapp.Adapter.VideoAdapter;
-
 import com.example.mytjfapp.Model.VideoBean;
 import com.example.mytjfapp.R;
+import com.example.mytjfapp.TjfMvp.WebViewActivity;
+import com.example.mytjfapp.Utils.CalcUtils;
 import com.example.mytjfapp.Utils.LogUtils;
 import com.example.mytjfapp.Utils.StringUrl;
 
@@ -23,13 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * Created by Administrator on 2018-08-14 0014.
  */
 
-public class XianReadFragment extends BaseFragment {
+public class RestFragment extends BaseFragment {
 
     @BindView(R.id._meiz_recycleView)
     RecyclerView recyclerView;
@@ -38,9 +41,10 @@ public class XianReadFragment extends BaseFragment {
     List<VideoBean.ResultsBean> list = new ArrayList<>();
     int i = 1;
 
+
     @Override
     public View getFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_read_fragment, container,false);
+        return inflater.inflate(R.layout.layout_read_fragment, container, false);
     }
 
     @Override
@@ -52,6 +56,7 @@ public class XianReadFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+
 
     }
 
@@ -75,10 +80,14 @@ public class XianReadFragment extends BaseFragment {
                 }, 500);
             }
         }, recyclerView);
+
+
     }
 
 
     public void getMeizi() {
+        LogUtils.e("zoule==");
+
         HttpHelper.obtain().get(StringUrl.getVideo + i, null, new HttpCallBack<VideoBean>() {
             @Override
             public String onSuccess(VideoBean result) {
@@ -90,6 +99,7 @@ public class XianReadFragment extends BaseFragment {
                 } else {
                     adapter.loadMoreEnd();
                 }
+
                 return null;
             }
 
@@ -97,7 +107,10 @@ public class XianReadFragment extends BaseFragment {
             public void onFailed(String string) {
                 LogUtils.e("err" + string.toString());
                 adapter.loadMoreFail();
+
             }
         });
     }
+
+
 }

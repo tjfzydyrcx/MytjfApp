@@ -1,4 +1,4 @@
-package com.example.mytjfapp.TjfMvp.Fragment;
+package com.example.mytjfapp.TjfMvp.Fragment.Grilmvp;
 
 
 import com.example.mymvp.base.MvpListener;
@@ -10,11 +10,11 @@ import java.util.List;
  * Created by Administrator on 2019-01-12 0012.
  */
 
-public class DailyPresenterImpl extends MeiziContract.MeiziPresenter{
+public class MeiziPresenterImpl extends MeiziContract.MeiziPresenter {
 
 
     @Override
-    protected void loadData(String url) {
+    public void loadData(String url) {
         final MeiziContract.MeizView mView = getView();
 
         if (mView == null) {

@@ -36,11 +36,17 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         rootView = getFragmentView(inflater, inflaters, savedInstanceState);
 
         unbind = ButterKnife.bind(this, rootView);
-        isViewCreated = true;
-        lazyLoad();
+
         return rootView;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isViewCreated = true;
+        lazyLoad();
+
+    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -49,7 +55,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         if (isVisibleToUser) {
             isUIVisible = true;
             lazyLoad();
-            initListener();
+
         } else {
             isUIVisible = false;
         }

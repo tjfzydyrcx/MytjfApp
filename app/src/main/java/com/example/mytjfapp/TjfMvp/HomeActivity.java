@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +17,7 @@ import com.example.mytjfapp.R;
 import com.example.mytjfapp.TjfMvp.Fragment.ALLDataFragment;
 import com.example.mytjfapp.TjfMvp.Fragment.AndroidFragment;
 import com.example.mytjfapp.TjfMvp.Fragment.GirlFramgnet;
-import com.example.mytjfapp.TjfMvp.Fragment.XianReadFragment;
+import com.example.mytjfapp.TjfMvp.Fragment.RestFragment;
 import com.example.mytjfapp.Utils.GlideUtils;
 import com.example.mytjfapp.View.DecoratorViewPager;
 
@@ -79,7 +78,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         mTabContents.add(new GirlFramgnet());
 
         mTabContents.add(new AndroidFragment());
-        mTabContents.add(new XianReadFragment());
+        mTabContents.add(new RestFragment());
         mTabContents.add(new ALLDataFragment());
 
 
@@ -103,7 +102,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         vp.setCurrentItem(1);
         vp.setNoScroll(false);
         vp.setAdapter(mAdapter);
-
+      vp.setOffscreenPageLimit(3);
         goodsTablay.setTabGravity(TabLayout.GRAVITY_FILL);
         goodsTablay.setTabMode(TabLayout.MODE_FIXED);
 

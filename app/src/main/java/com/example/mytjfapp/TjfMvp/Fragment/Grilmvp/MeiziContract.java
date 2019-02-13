@@ -1,4 +1,4 @@
-package com.example.mytjfapp.TjfMvp.Fragment;
+package com.example.mytjfapp.TjfMvp.Fragment.Grilmvp;
 
 import com.example.mymvp.base.BaseModel;
 import com.example.mymvp.base.BasePresenter;
@@ -20,7 +20,7 @@ public   class MeiziContract {
         void loadMeizi(String url, MvpListener<List<MeiziBean.ResultsBean>> listener);
     }
 
-    interface MeizView extends BaseView {
+    public interface MeizView extends BaseView {
         void setData(List<MeiziBean.ResultsBean> beanList);
 
     }

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.mytjfapp.Model.AllBean;
+import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.R;
 
 import java.util.List;
@@ -17,10 +18,15 @@ import java.util.List;
 
 public class AllAdapter extends BaseQuickAdapter<AllBean.ResultsBean, BaseViewHolder> {
     Context context;
-
+    List<AllBean.ResultsBean> data;
     public AllAdapter(Context context, @LayoutRes int layoutResId, @Nullable List<AllBean.ResultsBean> data) {
         super(layoutResId, data);
         this.context = context;
+        this.data=data;
+    }
+    public void setBeanList(List<AllBean.ResultsBean> list) {
+        this.data.addAll(list);
+        notifyDataSetChanged();
     }
 
     @Override

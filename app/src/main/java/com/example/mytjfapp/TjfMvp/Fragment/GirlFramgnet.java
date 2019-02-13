@@ -1,6 +1,7 @@
 package com.example.mytjfapp.TjfMvp.Fragment;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -14,6 +15,9 @@ import com.example.mymvp.base.BaseMvPFragmemt;
 import com.example.mytjfapp.Adapter.MeiziAdapter;
 import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.R;
+import com.example.mytjfapp.TjfMvp.Fragment.Grilmvp.MeiziContract;
+import com.example.mytjfapp.TjfMvp.Fragment.Grilmvp.MeiziModelImpl;
+import com.example.mytjfapp.TjfMvp.Fragment.Grilmvp.MeiziPresenterImpl;
 import com.example.mytjfapp.Utils.Pupwindowutils;
 import com.example.mytjfapp.Utils.ScreenUtils;
 import com.example.mytjfapp.Utils.StringUrl;
@@ -22,12 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018-08-09 0009.
  */
 
-public class GirlFramgnet extends BaseMvPFragmemt<DailyPresenterImpl, DailyModelImpl> implements MeiziContract.MeizView {
+public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModelImpl> implements MeiziContract.MeizView {
     @BindView(R.id._meiz_recycleView)
     RecyclerView recyclerView;
 
@@ -37,9 +42,10 @@ public class GirlFramgnet extends BaseMvPFragmemt<DailyPresenterImpl, DailyModel
     MeiziAdapter adapter;
     Window window;
 
+
     @Override
     public View getFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_read_fragment, container, false);
+        return inflater.inflate(R.layout.layout_meiziaty, container, false);
     }
 
     private long mStartTime = 0; // 定义一个初始判断时间变量
@@ -130,5 +136,7 @@ public class GirlFramgnet extends BaseMvPFragmemt<DailyPresenterImpl, DailyModel
     @Override
     public void showError() {
         adapter.loadMoreFail();
+
     }
+
 }

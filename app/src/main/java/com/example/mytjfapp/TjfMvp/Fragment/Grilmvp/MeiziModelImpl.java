@@ -1,4 +1,4 @@
-package com.example.mytjfapp.TjfMvp.Fragment;
+package com.example.mytjfapp.TjfMvp.Fragment.Grilmvp;
 
 import com.example.mymvp.base.MvpListener;
 import com.example.mymvp.network.MyListener;
@@ -7,7 +7,7 @@ import com.example.mytjfapp.Model.MeiziBean;
 
 import java.util.List;
 
-public class DailyModelImpl implements MeiziContract.MeiziModel {
+public class MeiziModelImpl implements MeiziContract.MeiziModel {
 
     @Override
     public void loadMeizi(String url, final MvpListener<List<MeiziBean.ResultsBean>> listener) {
