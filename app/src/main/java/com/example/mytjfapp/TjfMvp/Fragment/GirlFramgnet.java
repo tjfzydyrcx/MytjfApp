@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.completeimageview.CompleteImageView;
 import com.example.mymvp.Utils.LogUtils;
 import com.example.mymvp.base.BaseMvPFragmemt;
 import com.example.mytjfapp.Adapter.MeiziAdapter;
@@ -35,6 +36,7 @@ import butterknife.ButterKnife;
 public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModelImpl> implements MeiziContract.MeizView {
     @BindView(R.id._meiz_recycleView)
     RecyclerView recyclerView;
+    List<String> list1= new ArrayList<>();
 
     List<MeiziBean.ResultsBean> list = new ArrayList<>();
     List<MeiziBean> listmeiz = new ArrayList<>();
@@ -50,10 +52,12 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
 
     private long mStartTime = 0; // 定义一个初始判断时间变量
 
-
+    CompleteImageView completeImageView;
     @Override
     public void initData() {
+          completeImageView = new CompleteImageView(getActivity(), new FileDownLoader());
         list.clear();
+
         window = getActivity().getWindow();
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new MeiziAdapter(getActivity(), R.layout.layout, list);
@@ -67,14 +71,23 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
                     mStartTime = System.currentTimeMillis();
                     ScreenUtils.hide_statuslan(window);
                     MeiziBean.ResultsBean b = (MeiziBean.ResultsBean) adapter.getData().get(position);
-
+                    list1= new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
+//                        list1.add(list.get(i).getUrl());
                         if (list.get(i).getUrl().equals(b.getUrl())) {
+
                             Pupwindowutils mPupwindowutils =
                                     new Pupwindowutils(window, getActivity(), list);
                             mPupwindowutils.popuwindow_image(view, i, true);
+
                         }
+
                     }
+
+
+                   /* completeImageView.setUrls(list1,position);
+                    completeImageView.create();*/
+
                 }
             }
         });

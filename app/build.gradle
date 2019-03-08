@@ -36,17 +36,15 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     //注解
-//    compile 'com.jakewharton:butterknife:8.5.1'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //    compile 'com.jakewharton:butterknife:8.5.1'
+    //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     //https://www.jianshu.com/p/e10d69464c8e
-
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     compile('jp.wasabeef:glide-transformations:3.3.0') {
         exclude group: "com.android.support"
     }
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     //https://github.com/gyf-dev/ImmersionBar
-
     //gosn 解析
     compile 'com.google.code.gson:gson:2.2.4'
     //网络框架
@@ -61,4 +59,5 @@ dependencies {
     compile files('libs/libammsdk.jar')
     compile files('libs/open_sdk_r5778_lite.jar')
     compile project(':mymvp')
+    implementation project(':completeimageview')
 }

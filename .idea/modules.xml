@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MytjfApp.iml" filepath="$PROJECT_DIR$/MytjfApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/completeimageview/completeimageview.iml" filepath="$PROJECT_DIR$/completeimageview/completeimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/mymvp/mymvp.iml" filepath="$PROJECT_DIR$/mymvp/mymvp.iml" />
     </modules>
   </component>

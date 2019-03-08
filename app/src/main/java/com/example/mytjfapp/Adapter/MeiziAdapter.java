@@ -49,7 +49,7 @@ public class MeiziAdapter extends BaseQuickAdapter<MeiziBean.ResultsBean, BaseVi
         labelImageView.setLabelTextColor(Color.BLACK);
         labelImageView.setLabelTextSize(14);
         labelImageView.setLabelText(item.getSource());
-        GlideUtils.loadImage(context, item.getUrl(), labelImageView);
+//        GlideUtils.loadImage(context, item.getUrl(), labelImageView);
 
         ImageLoadBaseTool.display(context, labelImageView, item.getUrl(), new ImageConfig(R.drawable.img_start, R.drawable.img_fail, 25), new ImageLoadProcessInterface() {
 

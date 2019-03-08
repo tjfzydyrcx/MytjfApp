@@ -1,5 +1,6 @@
 package com.example.mytjfapp.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -130,6 +131,7 @@ public class GlideUtils {
     /**
      * 加载圆角图片
      */
+    @SuppressLint("CheckResult")
     public static void loadRoundCircleImage(Context context, String url, ImageView imageView) {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -137,7 +139,9 @@ public class GlideUtils {
                 .placeholder(placeholderSoWhite)
                 .error(errorSoWhite)
                 //.priority(Priority.HIGH)
+
                 .bitmapTransform(new RoundedCornersTransformation(45, 0, RoundedCornersTransformation.CornerType.ALL))
+
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(context).load(url).apply(options).into(imageView);
 
