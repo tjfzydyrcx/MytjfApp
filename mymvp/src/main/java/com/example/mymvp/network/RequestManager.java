@@ -6,6 +6,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.mymvp.Utils.LogUtils;
 import com.example.mymvp.app.MyApp;
 
 import java.util.HashMap;
@@ -58,10 +59,11 @@ public class RequestManager {
 
     }
 
-    public <T> void sendPost(String url, Class<T> clazz, final HashMap<String, String> map, final MyListener myListener) {
+    public <T> void sendPost(final String url, Class<T> clazz, final HashMap<String, String> map, final MyListener myListener) {
         MyRequest<T> request = new MyRequest<T>(url, clazz, new Response.Listener<T>() {
             @Override
             public void onResponse(T response) {
+                LogUtils.e("url=" + url.toString());
                 myListener.onSuccess(response);
             }
         }, new Response.ErrorListener() {
