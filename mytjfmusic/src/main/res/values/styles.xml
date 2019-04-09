@@ -4,10 +4,18 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/colorRed</item>
-
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
 
     </style>
 
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/open_exit</item>
+        <!--退出activity ，重新显示的执行动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/close_enter</item>
+        <!--退出activity ，退出是的执行动画-->
+        <item name="android:activityCloseExitAnimation">@anim/close_exit</item>
+    </style>
 
     <style name="line">
 

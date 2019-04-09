@@ -37,7 +37,9 @@ public class WelcomeActivity extends BaseActivity {
     public void toMain() {
         Intent intent = new Intent(instance, LoginActivity.class);
         startActivity(intent);
-        finish();
+//        finish();
+
+
     }
 
     @Override
