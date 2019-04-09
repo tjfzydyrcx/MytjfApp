@@ -12,6 +12,10 @@ public class StringUrl {
     public static String getXiandu = "http://gank.io/api/xiandu/data/id/appinn/count/10/";//page/1
     public static String getAll = "http://gank.io/api/data/all/10/";
     public static String baseLogin = "http://test.atscyc.com/public/api/api/login";
-    public static String sign= "wtrsgfv67nsfdfgf";
-    public static String sousuo=  "http://gank.io/api/search/query/listview/category/Android/";
+    public static String sign = "wtrsgfv67nsfdfgf";
+    public static String sousuo = "http://gank.io/api/search/query/listview/category/Android/";
+
+    public static String duanzi = "https://api.apiopen.top/getJoke"; // https://api.apiopen.top/getJoke?page=1&count=10&type=video
+
+
 }

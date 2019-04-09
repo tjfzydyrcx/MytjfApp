@@ -9,6 +9,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -60,4 +61,6 @@ dependencies {
     compile files('libs/open_sdk_r5778_lite.jar')
     compile project(':mymvp')
     implementation project(':completeimageview')
+    compile 'com.jdqm.tapelibrary:tapelibrary:1.0.0'
+    compile files('libs/pinyin4j-2.5.0.jar')
 }

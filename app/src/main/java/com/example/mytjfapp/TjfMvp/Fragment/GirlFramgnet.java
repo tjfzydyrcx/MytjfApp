@@ -36,7 +36,7 @@ import butterknife.ButterKnife;
 public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModelImpl> implements MeiziContract.MeizView {
     @BindView(R.id._meiz_recycleView)
     RecyclerView recyclerView;
-    List<String> list1= new ArrayList<>();
+    List<String> list1 = new ArrayList<>();
 
     List<MeiziBean.ResultsBean> list = new ArrayList<>();
     List<MeiziBean> listmeiz = new ArrayList<>();
@@ -53,11 +53,11 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
     private long mStartTime = 0; // 定义一个初始判断时间变量
 
     CompleteImageView completeImageView;
+
     @Override
     public void initData() {
-          completeImageView = new CompleteImageView(getActivity(), new FileDownLoader());
+        completeImageView = new CompleteImageView(getActivity(), new FileDownLoader());
         list.clear();
-
         window = getActivity().getWindow();
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new MeiziAdapter(getActivity(), R.layout.layout, list);
@@ -71,7 +71,7 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
                     mStartTime = System.currentTimeMillis();
                     ScreenUtils.hide_statuslan(window);
                     MeiziBean.ResultsBean b = (MeiziBean.ResultsBean) adapter.getData().get(position);
-                    list1= new ArrayList<>();
+                    list1 = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
 //                        list1.add(list.get(i).getUrl());
                         if (list.get(i).getUrl().equals(b.getUrl())) {
@@ -119,13 +119,9 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
 
     @Override
     protected void loadData() {
-
         String value = StringUrl.getMeiziUrl + i;
         LogUtils.e("luanma" + value);
-
         mPresenter.loadData(value);
-
-
     }
 
 

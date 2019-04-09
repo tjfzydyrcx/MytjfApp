@@ -1,1 +1,1 @@
-include ':app', ':mymvp', ':completeimageview'
+include ':app', ':mymvp', ':completeimageview', ':mytjfmusic'

@@ -51,7 +51,7 @@ public class XianReadFragment extends BaseFragment {
     @Override
     public void init() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new VideoAdapter(getActivity(), R.layout.layout_video_item, list);
+//        adapter = new VideoAdapter(getActivity(), R.layout.layout_video_item, list);
         recyclerView.setAdapter(adapter);
         getMeizi();
         //上拉加载（设置这个监听就表示有上拉加载功能了）

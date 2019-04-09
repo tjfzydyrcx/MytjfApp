@@ -29,7 +29,7 @@ public class TextPresenterImpl extends TextContract.TextPresenter {
             @Override
             public void onSuccess(List<AllBean.ResultsBean> result) {
 
-                 mView.hideLoading();
+                mView.hideLoading();
                 mView.setData(result);
             }
 

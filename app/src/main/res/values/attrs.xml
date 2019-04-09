@@ -11,4 +11,6 @@
         <attr name="indicator_src" format="color" />
         <attr name="indicator_style" format="integer"/>
     </declare-styleable>
+
+
 </resources>

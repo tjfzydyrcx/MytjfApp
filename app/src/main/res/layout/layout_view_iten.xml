@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.mymvp.scaleview1.VerticalScaleScrollView
+            android:id="@+id/scaleview"
+            android:layout_width="80dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:scale_view_height="8dip"
+            app:scale_view_margin="5dip"
+            app:scale_view_max="3"
+            app:scale_view_min="0" />
+
+        <com.example.mymvp.scaleview.VerticalScaleView
+            android:id="@+id/scaleview1"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone" />
+
+        <com.example.mytjfapp.Acitivity.MySeekBar
+            style="@style/ProgressBar_Mini"
+            android:id="@+id/seekBar"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="10dp"
+            android:paddingEnd="0dp"
+            android:paddingStart="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seek_style"
+             android:thumb="@drawable/thumb"
+            android:thumbOffset="0dp" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <com.example.mytjfapp.View.NewDashboardView
+                android:id="@+id/view1"
+                android:layout_width="200dp"
+                android:layout_height="100dp" />
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_sub"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/text_sub"
+                    android:gravity="center"
+                    android:text="－"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/text_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#A9AFAE"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/text_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/text_sub"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBar1"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:progress="0"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.jdqm.tapelibrary.TapeView
+        android:id="@+id/tapeview"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:maxValue="10"
+        app:minValue="0"
+        app:value="1" />
+
+
+    <com.example.mytjfapp.Acitivity.TimeClock
+
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone" />
+
+    <com.example.mytjfapp.Acitivity.DashboardView4
+
+        android:id="@+id/dashboard_view_4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+
+    <com.example.mytjfapp.Acitivity.InstrumentView
+
+        android:id="@+id/instrumentView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+
+        android:visibility="gone" />
+
+    <com.example.mytjfapp.View.DashboardView
+
+        android:id="@+id/view_dashboard"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone" />
+
+    <com.example.mytjfapp.Acitivity.TempControlView
+        android:id="@+id/temp_control"
+
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:visibility="gone" />
+</LinearLayout>

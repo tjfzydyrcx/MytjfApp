@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/completeimageview/completeimageview.iml" filepath="$PROJECT_DIR$/completeimageview/completeimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/mymvp/mymvp.iml" filepath="$PROJECT_DIR$/mymvp/mymvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mytjfmusic/mytjfmusic.iml" filepath="$PROJECT_DIR$/mytjfmusic/mytjfmusic.iml" />
     </modules>
   </component>
 </project>

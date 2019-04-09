@@ -16,6 +16,7 @@ import com.example.mymvp.base.BaseActivity;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.TjfMvp.Fragment.ALLDataFragment;
 import com.example.mytjfapp.TjfMvp.Fragment.AndroidFragment;
+import com.example.mytjfapp.TjfMvp.Fragment.DuanziFragment;
 import com.example.mytjfapp.TjfMvp.Fragment.GirlFramgnet;
 import com.example.mytjfapp.TjfMvp.Fragment.RestFragment;
 import com.example.mytjfapp.Utils.GlideUtils;
@@ -78,7 +79,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         mTabContents.add(new GirlFramgnet());
 
         mTabContents.add(new AndroidFragment());
-        mTabContents.add(new RestFragment());
+        mTabContents.add(new DuanziFragment());
         mTabContents.add(new ALLDataFragment());
 
 

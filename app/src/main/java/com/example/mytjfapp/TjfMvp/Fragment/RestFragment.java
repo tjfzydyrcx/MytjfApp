@@ -22,6 +22,8 @@ import com.example.mytjfapp.Utils.LogUtils;
 import com.example.mytjfapp.Utils.StringUrl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -63,7 +65,7 @@ public class RestFragment extends BaseFragment {
 
     public void init() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new VideoAdapter(getActivity(), R.layout.layout_video_item, list);
+//        adapter = new VideoAdapter(getActivity(), R.layout.layout_video_item, list);
         recyclerView.setAdapter(adapter);
         getMeizi();
         //上拉加载（设置这个监听就表示有上拉加载功能了）
@@ -87,8 +89,12 @@ public class RestFragment extends BaseFragment {
 
     public void getMeizi() {
         LogUtils.e("zoule==");
+        HashMap<String, String> map = new HashMap<>();
+        map.put("page", "1");
+        map.put("count", "4");
+        map.put("type", "video");
 
-        HttpHelper.obtain().get(StringUrl.getVideo + i, null, new HttpCallBack<VideoBean>() {
+        HttpHelper.obtain().get(StringUrl.duanzi, map, new HttpCallBack<VideoBean>() {
             @Override
             public String onSuccess(VideoBean result) {
                 LogUtils.e("dats" + result.toString());
@@ -99,7 +105,6 @@ public class RestFragment extends BaseFragment {
                 } else {
                     adapter.loadMoreEnd();
                 }
-
                 return null;
             }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InputvView">
+
+        <attr name="input_icon" format="reference"></attr>
+        <attr name="input_hint" format="string"></attr>
+        <attr name="input_password" format="boolean"></attr>
+    </declare-styleable>
+
+
+</resources>

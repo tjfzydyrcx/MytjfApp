@@ -56,8 +56,6 @@ public class AndroidFragment extends BaseMvPFragmemt<TextPresenterImpl, TextMode
 
     @Override
     public void initData() {
-
-
         list.clear();
         init();
         loadData();

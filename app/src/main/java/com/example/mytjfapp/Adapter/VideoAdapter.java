@@ -10,8 +10,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.mytjfapp.Model.DuanziBean;
 import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.Model.VideoBean;
 import com.example.mytjfapp.R;
@@ -29,23 +31,32 @@ import cn.jzvd.JZVideoPlayerStandard;
  * Created by Administrator on 2018-08-10 0010.
  */
 
-public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseViewHolder> {
+public class VideoAdapter extends BaseQuickAdapter<DuanziBean.ResultBean, BaseViewHolder> {
     Activity context;
 
-    public VideoAdapter(Activity context, @LayoutRes int layoutResId, @Nullable List<VideoBean.ResultsBean> data) {
+    public VideoAdapter(Activity context, @LayoutRes int layoutResId, @Nullable List<DuanziBean.ResultBean> data) {
         super(layoutResId, data);
         this.context = context;
     }
 
+    public void setBeanList(List<DuanziBean.ResultBean> list) {
+        this.mData.addAll(list);
+        notifyDataSetChanged();
+
+    }
+
 
     @Override
-    protected void convert(BaseViewHolder helper, VideoBean.ResultsBean item) {
-       /* JZVideoPlayerStandard jzVideoPlayerStandard=helper.getView(R.id.videoplayer);
+    protected void convert(BaseViewHolder helper, DuanziBean.ResultBean item) {
+        JZVideoPlayerStandard jzVideoPlayerStandard = helper.getView(R.id.videoplayer);
 
-        if (!TextUtils.isEmpty(item.getUrl())){
-            jzVideoPlayerStandard.setUp(item.getUrl(), JZVideoPlayer.SCREEN_WINDOW_LIST,item.getDesc());
+        if (!TextUtils.isEmpty(item.getVideo())) {
+            LogUtils.e("LAI=" + item.toString());
+            jzVideoPlayerStandard.setUp(item.getVideo(), JZVideoPlayer.SCREEN_WINDOW_NORMAL, item.getText());
+            Glide.with(context).load(item.getThumbnail()).into(jzVideoPlayerStandard.thumbImageView);
 
-        }*/
+        }
+
 
   /*      //初始化
         ParseWebUrlHelper parseWebUrlHelper = ParseWebUrlHelper.getInstance().init((WebView) helper.getView(R.id.Web_view), context, item.getUrl());
@@ -64,7 +75,7 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseVi
 
          });*/
 
-        WebView webView = helper.getView(R.id.Web_view);
+    /*    WebView webView = helper.getView(R.id.Web_view);
         webView.loadUrl(item.getUrl());
         webView.addJavascriptInterface(this, "android");//添加js监听 这样html就能调用客户
         WebSettings webSettings = webView.getSettings();
@@ -80,7 +91,7 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.ResultsBean, BaseVi
                 view.loadUrl(url);
                 return true;
             }
-        });
+        });*/
     }
 
 }

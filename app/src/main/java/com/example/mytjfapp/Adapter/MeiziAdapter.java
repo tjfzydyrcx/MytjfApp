@@ -37,9 +37,7 @@ public class MeiziAdapter extends BaseQuickAdapter<MeiziBean.ResultsBean, BaseVi
     public void setBeanList(List<MeiziBean.ResultsBean> list) {
         this.data.addAll(list);
         notifyDataSetChanged();
-   /*     DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new SWDiffCallBack(data, list), true);
 
-        diffResult.dispatchUpdatesTo(this);*/
     }
 
     @Override
