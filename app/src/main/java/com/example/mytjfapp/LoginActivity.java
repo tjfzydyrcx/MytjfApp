@@ -1,10 +1,17 @@
 package com.example.mytjfapp;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.mymvp.Views.HintSideBar;
 import com.example.mymvp.Views.SideBar;
@@ -18,6 +25,7 @@ import com.example.mytjfapp.Utils.MD5;
 import com.example.mytjfapp.Utils.SHA1;
 import com.example.mytjfapp.Utils.StringUrl;
 import com.example.mytjfapp.Utils.TooastUtil;
+import com.example.mytjfapp.View.VerticalSeekBar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +49,12 @@ public class LoginActivity extends BaseActivity implements SideBar.OnChooseLette
     RecyclerView rvUserList;
     @BindView(R.id.hintSideBar)
     HintSideBar hintSideBar;
+    @BindView(R.id.bar_add)
+    TextView barAdd;
+    @BindView(R.id.bar_sub)
+    TextView barSub;
+    @BindView(R.id.VerticalSeekBar)
+    com.example.mytjfapp.View.VerticalSeekBar VerticalSeekBar;
 
 
     @OnClick(R.id.login_btn)
@@ -111,7 +125,30 @@ public class LoginActivity extends BaseActivity implements SideBar.OnChooseLette
         rvUserList.setAdapter(adapter);
 
 
+        barAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (VerticalSeekBar.getProgress() >= 100) {
+                    VerticalSeekBar.setProgress(100);
+                } else if (VerticalSeekBar.getProgress() < 100) {
+                    VerticalSeekBar.setProgress(VerticalSeekBar.getProgress() + 5);
+                }
+
+            }
+        });
+        barSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (VerticalSeekBar.getProgress() > 0) {
+                    VerticalSeekBar.setProgress(VerticalSeekBar.getProgress() - 5);
+                } else if (VerticalSeekBar.getProgress() <= 0) {
+                    VerticalSeekBar.setProgress(0);
+                }
+
+            }
+        });
     }
+
 
     public void initData() {
         User user1 = new User("陈", "12345678");
@@ -215,5 +252,53 @@ public class LoginActivity extends BaseActivity implements SideBar.OnChooseLette
     @Override
     public void onNoChooseLetter() {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    private Button btn_determine;
+    private Button btn_cancel;
+    private AlertDialog dlg;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        //判断如果单击了返回按钮
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //创建对话框实例
+            dlg = new AlertDialog.Builder(this).create();
+            dlg.show();//显示对话框
+            Window window = dlg.getWindow();//对话框窗口
+            window.setGravity(Gravity.CENTER);//设置对话框显示在屏幕中间
+            window.setWindowAnimations(R.style.dialog_style);//添加动画
+            window.setContentView(R.layout.dialog_layout);//设置对话框的布局文件
+            //获取对话框确定和取消按钮
+            btn_determine = window.findViewById(R.id.btn_determine);
+            btn_cancel = window.findViewById(R.id.btn_cancel);
+            initEvent();//初始化事件
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    private void initEvent() {
+        //确定
+        btn_determine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dlg.dismiss();//关闭对话框
+                finish();//退出当前界面
+            }
+        });
+
+        //取消
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dlg.dismiss();//关闭对话框
+            }
+        });
     }
 }

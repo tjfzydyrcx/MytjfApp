@@ -49,7 +49,8 @@ public class MeiziAdapter extends BaseQuickAdapter<MeiziBean.ResultsBean, BaseVi
         labelImageView.setLabelText(item.getSource());
 //        GlideUtils.loadImage(context, item.getUrl(), labelImageView);
 
-        ImageLoadBaseTool.display(context, labelImageView, item.getUrl(), new ImageConfig(R.drawable.img_start, R.drawable.img_fail, 25), new ImageLoadProcessInterface() {
+        ImageLoadBaseTool.display(context, labelImageView, item.getUrl(),
+                new ImageConfig(R.drawable.img_start, R.drawable.img_fail, 25), new ImageLoadProcessInterface() {
 
             @Override
             public void onLoadStarted() {

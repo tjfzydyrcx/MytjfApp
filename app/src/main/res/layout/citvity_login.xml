@@ -1,9 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:fillViewport="true"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,10 +88,65 @@
             android:text="当前版本：v1.0" />
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center">
+
+        <com.example.mytjfapp.View.szxkdView
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"></com.example.mytjfapp.View.szxkdView>
+
+        <com.example.mytjfapp.View.VerticalSeekBar
+            android:id="@+id/VerticalSeekBar"
+            style="@style/ProgressBar_mpa"
+            android:layout_width="20dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:paddingEnd="0dp"
+            android:paddingStart="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seek_style"
+            android:thumb="@drawable/thumb"
+            android:thumbOffset="0dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:background="@color/oldlace"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bar_add"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="+"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/bar_sub"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="－"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+    </FrameLayout>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_userList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp" />
 
     <com.example.mymvp.Views.HintSideBar
         android:id="@+id/hintSideBar"
@@ -98,4 +154,4 @@
         android:layout_height="match_parent"
         android:layout_gravity="right" />
 
-</FrameLayout>
+</LinearLayout>

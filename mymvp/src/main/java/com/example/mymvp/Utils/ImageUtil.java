@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.example.mymvp.network.RequestManager;
+import com.example.mymvp.network.VolleyUtils.RequestManager;
 
 public class ImageUtil {
     public static void loadImage(String url, ImageView iv, int placeHolder, int errorHolder) {

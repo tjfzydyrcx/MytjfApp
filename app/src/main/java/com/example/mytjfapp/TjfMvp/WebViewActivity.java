@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
+import android.webkit.WebHistoryItem;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -23,6 +26,9 @@ import android.widget.TextView;
 import com.example.mymvp.base.BaseActivity;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.Utils.LogUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +49,7 @@ public class WebViewActivity extends BaseActivity {
     @BindView(R.id.activity_web)
     LinearLayout activityWeb;
     String url;
+    private List<String> loadHistoryUrls = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -111,12 +118,11 @@ public class WebViewActivity extends BaseActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 
-             if (request != null) {
+            if (request != null) {
                 view.loadUrl(request.getUrl().toString());
             }
             return true;
         }
-
 
 
         @RequiresApi(api = Build.VERSION_CODES.M)
@@ -124,7 +130,16 @@ public class WebViewActivity extends BaseActivity {
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
             super.onReceivedError(view, request, error);
 
-            LogUtils.e(error.getDescription().toString()+"error=="+error.toString());
+            LogUtils.e(error.getDescription().toString() + "error==" + error.toString());
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+
+            loadHistoryUrls.add(url);
+
+
         }
     }
 
@@ -134,7 +149,17 @@ public class WebViewActivity extends BaseActivity {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
                     if (mWebView.canGoBack()) {
-                        mWebView.goBack();
+                        if (loadHistoryUrls.size() > 1) {
+                            //重新加载之前的页面,这里为了让标题也能正常显示
+                            String url = loadHistoryUrls.get(loadHistoryUrls.size() - 2);
+                            loadHistoryUrls.remove(loadHistoryUrls.size() - 1);
+                            if (loadHistoryUrls.size() > 0) {
+                                loadHistoryUrls.remove(loadHistoryUrls.size() - 1);
+                            }
+                            mWebView.loadUrl(url);
+                        }else{
+                            finish();
+                        }
                     } else {
                         finish();
                     }
@@ -159,10 +184,26 @@ public class WebViewActivity extends BaseActivity {
         }
 
         @Override
-        public void onReceivedTitle(WebView view, String title) {
-            super.onReceivedTitle(view, title);
-            titles.setText(title);
+        public void onReceivedTitle(WebView webView, String title) {
+            super.onReceivedTitle(webView, title);
+            /*String title1 = view.getTitle();
+           LogUtils.e("title="+title1);*/
+          /*   if (!TextUtils.isEmpty(title)) {
+                titles.setText(title);
+            }*/
+            if(null != title && !webView.getUrl().contains(title)){
+                titles.setText(title);
+            }
+//            getWebTitle();
+        }
+
+
+    }
+    private void getWebTitle(){
+        WebBackForwardList forwardList = mWebView.copyBackForwardList();
+        WebHistoryItem item = forwardList.getCurrentItem();
+        if (item != null) {
+            titles.setText(item.getTitle());
         }
     }
-
 }

@@ -3,10 +3,7 @@ package com.example.mytjfapp.TjfMvp.Fragment.duanzimvp;
 import com.example.mymvp.base.MvpListener;
 import com.example.mymvp.network.HttpProcessor.Http.HttpCallBack;
 import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
-import com.example.mymvp.network.MyListener;
-import com.example.mymvp.network.RequestManager;
 import com.example.mytjfapp.Model.DuanziBean;
-import com.example.mytjfapp.Utils.LogUtils;
 import com.example.mytjfapp.Utils.StringUrl;
 
 import java.util.HashMap;

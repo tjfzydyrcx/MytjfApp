@@ -58,6 +58,7 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
     public void initData() {
         completeImageView = new CompleteImageView(getActivity(), new FileDownLoader());
         list.clear();
+
         window = getActivity().getWindow();
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new MeiziAdapter(getActivity(), R.layout.layout, list);
@@ -127,9 +128,10 @@ public class GirlFramgnet extends BaseMvPFragmemt<MeiziPresenterImpl, MeiziModel
 
     @Override
     public void setData(List<MeiziBean.ResultsBean> beanList) {
-        adapter.loadMoreComplete();
+
         adapter.setBeanList(beanList);
         LogUtils.e("数据===" + beanList.size());
+        adapter.loadMoreComplete();
     }
 
     @Override

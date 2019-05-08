@@ -2,6 +2,8 @@ package com.example.mytjfapp;
 
 import android.app.Application;
 
+import com.example.mymvp.network.HttpProcessor.Http.HttpHelper;
+import com.example.mymvp.network.HttpProcessor.processor.Okhttp3Processor;
 
 
 /**
@@ -14,7 +16,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance=this;
-
+        HttpHelper.init(new Okhttp3Processor());
     }
 
 }

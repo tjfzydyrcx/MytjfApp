@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <!--   android:name="com.example.mytjfapp.Acitivity.ViewActivity"-->
         <activity
-            android:name=".LoginActivity"
+            android:name=".TjfMvp.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

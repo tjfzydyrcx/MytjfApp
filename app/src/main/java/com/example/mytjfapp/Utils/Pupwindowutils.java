@@ -14,6 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
+import com.example.mymvp.ImgLoadUtils.ImageConfig;
+import com.example.mymvp.ImgLoadUtils.ImageLoadBaseTool;
+import com.example.mymvp.ImgLoadUtils.ImageLoadProcessInterface;
 import com.example.mytjfapp.Model.MeiziBean;
 import com.example.mytjfapp.R;
 import com.example.mytjfapp.View.ShowImagesViewPager;
@@ -43,7 +46,7 @@ public class Pupwindowutils {
 
     }
 
-    public Pupwindowutils(Window window,Context mContent, String imglist) {
+    public Pupwindowutils(Window window, Context mContent, String imglist) {
         this.mContent = mContent;
         this.imglist1 = imglist;
         this.window = window;
@@ -85,6 +88,8 @@ public class Pupwindowutils {
             mViews.add(img);
             LogUtils.e("imglist1" + imglist1);
             GlideUtils.loadImage(mContent, imglist1, img);
+//            loadImg(img, imglist1);
+
             img.setOnPhotoTapListener(photoTapListener);
         }
 
@@ -124,7 +129,7 @@ public class Pupwindowutils {
     PhotoViewAttacher.OnPhotoTapListener photoTapListener = new PhotoViewAttacher.OnPhotoTapListener() {
         @Override
         public void onPhotoTap(View view, float v, float v1) {
-           ScreenUtils.show_statuslan(window);
+            ScreenUtils.show_statuslan(window);
             popupWindow.dismiss();
             mViews.removeAll(imglist);
         }
@@ -134,6 +139,34 @@ public class Pupwindowutils {
 
         }
     };
+
+    public void loadImg(final PhotoView img, final String imglist1) {
+        ImageLoadBaseTool.display(mContent, img, imglist1,
+                new ImageConfig(R.drawable.img_start, R.drawable.img_fail, 0), new ImageLoadProcessInterface() {
+
+                    @Override
+                    public void onLoadStarted() {
+                        LogUtils.e("加载中");
+                    }
+
+                    @Override
+                    public void onResourceReady() {
+                        LogUtils.e("已完成");
+                    }
+
+                    @Override
+                    public void onLoadCleared() {
+                        LogUtils.e(imglist1 + "取消清除");
+                    }
+
+                    @Override
+                    public void onLoadFailed() {
+                        LogUtils.e("失败");
+                        loadImg(img, imglist1);
+                    }
+                });
+
+    }
 
     public class MyPagerAdapter extends PagerAdapter {
         @Override
